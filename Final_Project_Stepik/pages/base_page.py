@@ -16,15 +16,6 @@ class BasePage():
         except (NoSuchElementException):
             return False
         return True
-
-
-    def solve_quiz_and_get_code(self, how, what):
-        try:
-            self.browser.find_element(how, what)
-        except (NoSuchElementException):
-            return False
-        return True
-        
-
+    
     def open(self):
         self.browser.get(self.url)
