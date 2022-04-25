@@ -14,6 +14,7 @@ class BasePageLocators():
 
 
 class ProductPageLocators():
+    LOGIN_FROM_PP = (By.XPATH, '/html/body/div[1]/div[2]/div/ul/li/a')
     ADD_TO_CART = (By.CSS_SELECTOR, "[class = 'btn btn-lg btn-primary btn-add-to-basket']")
 
 class LoginLocators():
