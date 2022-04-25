@@ -1,20 +1,16 @@
 from .base_page import BasePage
-
+from .locators import LoginLocators
 
 class LoginPage(BasePage):
-    def should_be_login_page(self):
-        self.should_be_login_url()
-        self.should_be_login_form()
-        self.should_be_register_form()
 
-    def should_be_login_url(self):
-        # реализуйте проверку на корректный url адрес
-        assert True
-
-    def should_be_login_form(self):
-        # реализуйте проверку, что есть форма логина
-        assert True
-
-    def should_be_register_form(self):
-        # реализуйте проверку, что есть форма регистрации на странице
-        assert True
+    def register_new_user(self, email, password):
+        
+        input_email = self.browser.find_element(*LoginLocators.EMAIL)
+        input_email.send_keys(email)
+        input_pass = self.browser.find_element(*LoginLocators.PASS)
+        input_pass.send_keys(password)
+        conf_pass = self.browser.find_element(*LoginLocators.CONF_PASS)
+        conf_pass.send_keys(password)
+        reg_but = self.browser.find_element_by_xpath('/html/body/div[2]/div/div[2]/div[2]/div/div[2]/form/button')
+        self.browser.execute_script("arguments[0].scrollIntoView();", reg_but)
+        reg_but.click()
